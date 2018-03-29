@@ -11900,19 +11900,19 @@ div#notebook {
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#TODO 1</span>
 
 <span class="c1">#目标：计算价值的最小值</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的最大值</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的平均值</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的中值</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的标准差</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：输出计算的结果</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -11943,7 +11943,7 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -11973,9 +11973,9 @@ Standard deviation of prices: $165,340.28
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#38382;&#39064;-1---&#22238;&#31572;&#65306;">&#38382;&#39064; 1 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-1---&#22238;&#31572;&#65306;">&#182;</a></h3><ul>
-<li>'RM'与'MEDV'成正比</li>
-<li>'LSTAT'与'MEDV'成反比，低收入业主百分比越低越低，'MEDV'越高</li>
-<li>'PTRATIO'与'MEDV'成反比，比例（学生/老师）越低，'MEDV'越高</li>
+<li>'RM'与'MEDV'成正比,房间数多的房子有可能是别墅之类的高档住房</li>
+<li>'LSTAT'与'MEDV'成反比，低收入业主百分比越低越低，'MEDV'越高。低收入少，代表社区大多的住户再社会中所处的地位大多都在中上。治安会好。</li>
+<li>'PTRATIO'与'MEDV'成反比，比例（学生/老师）越低，'MEDV'越高。老师愈多对应的教学质量越高。</li>
 </ul>
 
 </div>
@@ -11998,40 +11998,21 @@ Standard deviation of prices: $165,340.28
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO 2</span>
 
 <span class="c1"># 提示： 导入train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTAT&#39;</span><span class="p">,</span><span class="s1">&#39;PTRATIO&#39;</span><span class="p">]])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/dongyan/anaconda2/lib/python2.7/site-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
-  &#34;This module will be removed in 0.20.&#34;, DeprecationWarning)
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -12190,7 +12171,7 @@ Standard deviation of prices: $165,340.28
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#38382;&#39064;-3---&#22238;&#31572;:">&#38382;&#39064; 3 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-3---&#22238;&#31572;:">&#182;</a></h3><ul>
-<li>R^2 score 接近1</li>
+<li>R^2 score 目标变量的平方和中有92.3%的平方和受到自变量的影响。此模型成功地描述了目标变量的变化。</li>
 </ul>
 
 </div>
@@ -13295,11 +13276,15 @@ igAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-4---&#22238;&#31572;:">&#38382;&#39064; 4 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-4---&#22238;&#31572;:">&#182;</a></h3><ul>
-<li>depth = 1;随着训练点数的增加=&gt;训练集得分较低且平稳，验证集曲线得分较低且平稳，可能会相交</li>
-<li>depth = 3;随着训练点数的增加=&gt;训练集得分较高且平稳，验证集曲线得分较高且平稳，可能会相交</li>
-<li>depth = 6;随着训练点数的增加=&gt;训练集得分较高且缓慢下降，验证集曲线得分较高且上升，可能不会相交</li>
-<li>depth = 10;随着训练点数的增加=&gt;训练集得分较高且平稳，验证集曲线得分较高且上升，可能不会相交</li>
+<h3 id="&#38382;&#39064;-4---&#22238;&#31572;:">&#38382;&#39064; 4 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-4---&#22238;&#31572;:">&#182;</a></h3><h4 id="max_depth-=-6&#30340;&#22270;&#20687;&#26469;&#35828;&#65292;&#20854;&#26368;&#22823;&#28145;&#24230;&#20026;6&#12290;">max_depth = 6&#30340;&#22270;&#20687;&#26469;&#35828;&#65292;&#20854;&#26368;&#22823;&#28145;&#24230;&#20026;6&#12290;<a class="anchor-link" href="#max_depth-=-6&#30340;&#22270;&#20687;&#26469;&#35828;&#65292;&#20854;&#26368;&#22823;&#28145;&#24230;&#20026;6&#12290;">&#182;</a></h4><ul>
+<li>随着训练数据量的增加(0-300)，训练曲线的评分逐渐下降，最终会趋于稳定。</li>
+<li>随着训练数据量的增加(0-300)，验证曲线的评分逐步提高，最终也趋于稳定。</li>
+<li>在300点的时候，训练曲线得分较高，验证曲线得分较低，且看似不会有交点。初步断定为过拟合。</li>
+</ul>
+<h4 id="&#24403;&#22686;&#21152;300&#20197;&#19978;&#30340;&#35757;&#32451;&#28857;&#65292;&#25968;&#25454;&#27169;&#22411;&#30340;&#34920;&#29616;&#19981;&#20250;&#25552;&#21319;&#22826;&#22810;&#65292;&#26368;&#37325;&#28857;&#30340;&#36824;&#26159;&#19982;&#26368;&#22823;&#28145;&#24230;&#65288;&#27169;&#22411;&#30340;&#21442;&#25968;&#65289;&#26377;&#20851;&#12290;">&#24403;&#22686;&#21152;300&#20197;&#19978;&#30340;&#35757;&#32451;&#28857;&#65292;&#25968;&#25454;&#27169;&#22411;&#30340;&#34920;&#29616;&#19981;&#20250;&#25552;&#21319;&#22826;&#22810;&#65292;&#26368;&#37325;&#28857;&#30340;&#36824;&#26159;&#19982;&#26368;&#22823;&#28145;&#24230;&#65288;&#27169;&#22411;&#30340;&#21442;&#25968;&#65289;&#26377;&#20851;&#12290;<a class="anchor-link" href="#&#24403;&#22686;&#21152;300&#20197;&#19978;&#30340;&#35757;&#32451;&#28857;&#65292;&#25968;&#25454;&#27169;&#22411;&#30340;&#34920;&#29616;&#19981;&#20250;&#25552;&#21319;&#22826;&#22810;&#65292;&#26368;&#37325;&#28857;&#30340;&#36824;&#26159;&#19982;&#26368;&#22823;&#28145;&#24230;&#65288;&#27169;&#22411;&#30340;&#21442;&#25968;&#65289;&#26377;&#20851;&#12290;">&#182;</a></h4><ul>
+<li>depth=1的图像，两个曲线得分很低，欠拟合。</li>
+<li>depth=3时两条曲线最终收敛到的评分都很高。相比其他模型参数而言，depth=3的模型接近最优模型。</li>
+<li>depth=10的图像，训练得分较高，验证得分较低，过拟合。</li>
 </ul>
 
 </div>
@@ -13776,8 +13761,10 @@ RU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-5---&#22238;&#31572;:">&#38382;&#39064; 5 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-5---&#22238;&#31572;:">&#182;</a></h3><p>最大深度=1，训练集得分曲线与验证集得分曲线近似平行，且都得分较低。欠拟合
-最大深度=10，训练集得分曲线持续走高。验证集得分曲线持续走低。过拟合</p>
+<h3 id="&#38382;&#39064;-5---&#22238;&#31572;:">&#38382;&#39064; 5 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-5---&#22238;&#31572;:">&#182;</a></h3><ul>
+<li>depth=1,训练时，很大的偏差，因为模型不够复杂不足以捕捉基本关系，训练得分和验证得分都小于0.6；</li>
+<li>depth=10,训练时，出现了很大的方差（训练得分和验证得分差距较大），即出现了过拟合现象，这是因为模型过于复杂，很好匹配了训练集，但是无法将此模型泛化到更多数据，验证得分太低。</li>
+</ul>
 
 </div>
 </div>
@@ -13795,7 +13782,9 @@ RU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-6---&#22238;&#31572;:">&#38382;&#39064; 6 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-6---&#22238;&#31572;:">&#182;</a></h3>
+<h3 id="&#38382;&#39064;-6---&#22238;&#31572;:">&#38382;&#39064; 6 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-6---&#22238;&#31572;:">&#182;</a></h3><p>depth=4为最优模型
+因为depth=3时，验证得分和训练得分都有上升的空间，欠拟合。depth=5的时，验证得分在走低，训练得分走高，过拟合。</p>
+
 </div>
 </div>
 </div>
@@ -13822,7 +13811,7 @@ RU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-7---&#22238;&#31572;:">&#38382;&#39064; 7 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-7---&#22238;&#31572;:">&#182;</a></h3><p>*事先为每个参数设定一组值，然后穷举各种参数组合，找到最好的那一组。</p>
+<h3 id="&#38382;&#39064;-7---&#22238;&#31572;:">&#38382;&#39064; 7 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-7---&#22238;&#31572;:">&#182;</a></h3><p><em>事先为每个参数设定一组值，然后穷举各种参数组合，找到最好的那一组。</em>网格搜索会搜索模型所有的参数，记录每组参数的得分，最优为得分最高的</p>
 
 </div>
 </div>
@@ -13847,13 +13836,30 @@ RU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#38382;&#39064;-8---&#22238;&#31572;&#65306;">&#38382;&#39064; 8 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-8---&#22238;&#31572;&#65306;">&#182;</a></h3><ul>
-<li>K折交叉验证法（k-fold cross-validation）：
-我们每次的测试集将不再只包含一个数据，而是多个，具体数目将根据K的选取决定。比如，如果K=5，那么我们利用五折交叉验证的步骤就是：
-1.将所有数据集分成5份
-2.不重复地每次取其中一份做测试集，用其他四份做训练集训练模型，之后计算该模型在测试集上的MSE_i
-3.将5次的MSE_i取平均得到最后的MSE</li>
-<li>这样做的优点在于，所有的样本都被作为了训练集和测试集，每个样本都被验证了一次。 </li>
+<li>K折交叉验证法（k-fold cross-validation）：k折交叉验证法即将数据集分成k个子集，每个子集均做一次验证集，其余的作为训练集。如此交叉验证重复k次，每次选择一个子集作为验证集，并将k次的平均交叉验证识别率作为结果。</li>
+<li>这样做的优点在于，所有的数据集都被作为了训练集和验证集，每个样本都被验证了一次。 </li>
 <li>'cv<em>results</em>':将键作为列标题和值作为列的命令，可以导入到DataFrame中。</li>
+</ul>
+<p><code>{
+'param_kernel': kernel参数（数组）
+'param_gamma': gamma参数（数组）
+'param_degree': degree参数（数组）
+'split0_test_score'  : 测试得分
+'split1_test_score'  : 测试得分
+'mean_test_score'    : 平均测试得分
+'std_test_score'     : 测试得分标准偏差
+'rank_test_score'    : 测试得分等级
+'split0_train_score' : 训练得分
+'split1_train_score' : 训练得分
+'mean_train_score'   : 平均训练得分
+'std_train_score'    : 训练得分标准偏差
+'mean_fit_time'      : 平均适配时间（秒）
+'std_fit_time'       : 适配时间标准偏差（秒）
+'mean_score_time'    : 平均得分时间（秒）
+'std_score_time'     : 平均得分标准偏差（秒）
+'params'             : 备用参数，eg：[{'kernel': 'poly', 'degree': 2}, ...],
+}</code></p>
+<ul>
 <li>网格搜索算法用于系统地遍历多种参数的组合，通过交叉验证来确定最佳效果参数。如果网格搜索时不使用交叉验证则可能使得模型泛化能力无法达到最优(先调整参数后通过尽可能多的验证集来验证模型)。</li>
 </ul>
 
@@ -14121,9 +14127,9 @@ Predicted selling price for Client 3&#39;s home: $933,660.00
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#38382;&#39064;-10---&#22238;&#31572;&#65306;">&#38382;&#39064; 10 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-10---&#22238;&#31572;&#65306;">&#182;</a></h3><ul>
 <li>合理</li>
-<li>client2 的贫困指数最高，老师配比也较低，房间数较低</li>
-<li>client1 的贫困指数中等，老师配比也较中等，房间数中等</li>
-<li>client3 的贫困指数最低，老师配比也较高，房间数中等</li>
+<li>client2（贫困）的贫困指数最高，老师配比也较低，房间数较低。大于房价最小值</li>
+<li>client1（中产）的贫困指数中等，老师配比也较中等，房间数中等。位于房价中间价位</li>
+<li>client3（富人） 的贫困指数最低，老师配比也较高，房间数中等。小于房价最大值</li>
 </ul>
 
 </div>
@@ -14256,7 +14262,7 @@ Range in prices: $32,116.67
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-12---&#22238;&#31572;&#65306;">&#38382;&#39064; 12 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-12---&#22238;&#31572;&#65306;">&#182;</a></h3><p>没有看明白，</p>
+<h3 id="&#38382;&#39064;-12---&#22238;&#31572;&#65306;">&#38382;&#39064; 12 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-12---&#22238;&#31572;&#65306;">&#182;</a></h3><p>预测值差距在3W左右，在接收范围内，该模型足够健壮能保证预测的一致性。</p>
 
 </div>
 </div>

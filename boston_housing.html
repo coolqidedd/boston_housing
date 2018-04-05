@@ -11806,13 +11806,13 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 载入此项目所需要的库</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">visuals</span> <span class="kn">as</span> <span class="nn">vs</span> <span class="c1"># Supplementary code</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 载入此项目所需要的库</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">visuals</span> <span class="k">as</span> <span class="nn">vs</span> <span class="c1"># Supplementary code</span>
 
 <span class="c1"># 检查你的Python版本</span>
-<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">version_info</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="n">version_info</span>
 <span class="k">if</span> <span class="n">version_info</span><span class="o">.</span><span class="n">major</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">version_info</span><span class="o">.</span><span class="n">minor</span> <span class="o">!=</span> <span class="mi">7</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;请使用Python 2.7来完成此项目&#39;</span><span class="p">)</span>
     
@@ -11830,13 +11830,13 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 载入波士顿房屋的数据集</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 载入波士顿房屋的数据集</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;housing.csv&#39;</span><span class="p">)</span>
 <span class="n">prices</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;MEDV&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
     
 <span class="c1"># 完成</span>
-<span class="k">print</span> <span class="s2">&quot;Boston housing dataset has {} data points with {} variables each.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;Boston housing dataset has </span><span class="si">{}</span><span class="s2"> data points with </span><span class="si">{}</span><span class="s2"> variables each.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11897,7 +11897,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#TODO 1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#TODO 1</span>
 
 <span class="c1">#目标：计算价值的最小值</span>
 <span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
@@ -11915,12 +11915,12 @@ div#notebook {
 <span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：输出计算的结果</span>
-<span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="k">print</span> <span class="s2">&quot;Minimum price: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">minimum_price</span><span class="p">)</span>
-<span class="k">print</span> <span class="s2">&quot;Maximum price: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">maximum_price</span><span class="p">)</span>
-<span class="k">print</span> <span class="s2">&quot;Mean price: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_price</span><span class="p">)</span>
-<span class="k">print</span> <span class="s2">&quot;Median price ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">median_price</span><span class="p">)</span>
-<span class="k">print</span> <span class="s2">&quot;Standard deviation of prices: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_price</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="nb">print</span> <span class="s2">&quot;Minimum price: $</span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">minimum_price</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;Maximum price: $</span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">maximum_price</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;Mean price: $</span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_price</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;Median price $</span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">median_price</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;Standard deviation of prices: $</span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_price</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12001,10 +12001,10 @@ Standard deviation of prices: $165,171.13
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO 2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO 2</span>
 
 <span class="c1"># 提示： 导入train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTAT&#39;</span><span class="p">,</span><span class="s1">&#39;PTRATIO&#39;</span><span class="p">]])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
@@ -12075,10 +12075,10 @@ Standard deviation of prices: $165,171.13
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO 3 可选</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO 3 可选</span>
 
 <span class="c1"># 不允许导入任何计算决定系数的库</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">r2_score</span>
 
 <span class="k">def</span> <span class="nf">performance_metric</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;计算并返回预测值相比于预测值的分数&quot;&quot;&quot;</span>
@@ -12138,9 +12138,9 @@ Standard deviation of prices: $165,171.13
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 计算这个模型的预测结果的决定系数</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 计算这个模型的预测结果的决定系数</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">performance_metric</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mf">7.8</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">])</span>
-<span class="k">print</span> <span class="s2">&quot;Model has a coefficient of determination, R^2, of {:.3f}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;Model has a coefficient of determination, R^2, of </span><span class="si">{:.3f}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12202,7 +12202,7 @@ Standard deviation of prices: $165,171.13
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 根据不同的训练集大小，和最大深度，生成学习曲线</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 根据不同的训练集大小，和最大深度，生成学习曲线</span>
 <span class="n">vs</span><span class="o">.</span><span class="n">ModelLearning</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 
@@ -13305,7 +13305,7 @@ igAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 根据不同的最大深度参数，生成复杂度曲线</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 根据不同的最大深度参数，生成复杂度曲线</span>
 <span class="n">vs</span><span class="o">.</span><span class="n">ModelComplexity</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 
@@ -13811,7 +13811,7 @@ RU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-7---&#22238;&#31572;:">&#38382;&#39064; 7 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-7---&#22238;&#31572;:">&#182;</a></h3><p><em>事先为每个参数设定一组值，然后穷举各种参数组合，找到最好的那一组。</em>网格搜索会搜索模型所有的参数，记录每组参数的得分，最优为得分最高的</p>
+<h3 id="&#38382;&#39064;-7---&#22238;&#31572;:">&#38382;&#39064; 7 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-7---&#22238;&#31572;:">&#182;</a></h3><p><em>事先为每个参数设定一组值，然后穷举各种参数组合，找到最好的那一组。</em>网格搜索会搜索模型所有的参数，记录每组参数的得分，选出得分最好的那一组</p>
 
 </div>
 </div>
@@ -13835,9 +13835,15 @@ RU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-8---&#22238;&#31572;&#65306;">&#38382;&#39064; 8 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-8---&#22238;&#31572;&#65306;">&#182;</a></h3><ul>
-<li>K折交叉验证法（k-fold cross-validation）：k折交叉验证法即将数据集分成k个子集，每个子集均做一次验证集，其余的作为训练集。如此交叉验证重复k次，每次选择一个子集作为验证集，并将k次的平均交叉验证识别率作为结果。</li>
-<li>这样做的优点在于，所有的数据集都被作为了训练集和验证集，每个样本都被验证了一次。 </li>
+<h3 id="&#38382;&#39064;-8---&#22238;&#31572;&#65306;">&#38382;&#39064; 8 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-8---&#22238;&#31572;&#65306;">&#182;</a></h3><h4 id="K&#25240;&#20132;&#21449;&#39564;&#35777;&#27861;&#65288;k-fold-cross-validation&#65289;&#65306;">K&#25240;&#20132;&#21449;&#39564;&#35777;&#27861;&#65288;k-fold cross-validation&#65289;&#65306;<a class="anchor-link" href="#K&#25240;&#20132;&#21449;&#39564;&#35777;&#27861;&#65288;k-fold-cross-validation&#65289;&#65306;">&#182;</a></h4><ul>
+<li>k折交叉验证法即将数据集分成k份（数据被按一定比例分成了训练集和测试集，在K折交叉验证中训练集又被分成了K份，依次作为验证集。），每个子集均做一次验证集，其余的作为训练集。如此交叉验证重复k次，每次选择一个子集作为验证集，并将k次的平均交叉验证识别率作为结果。</li>
+<li>测试集评估模型最终表现，原则上只使用一次。</li>
+<li><p>验证集用于模型调优，比如交叉验证中。</p>
+</li>
+<li><p>这样做的优点在于，所有的数据集都被作为了训练集和验证集，每个样本都被验证了一次。</p>
+</li>
+</ul>
+<ul>
 <li>'cv<em>results</em>':将键作为列标题和值作为列的命令，可以导入到DataFrame中。</li>
 </ul>
 <p><code>{
@@ -13859,8 +13865,12 @@ RU5ErkJggg==
 'std_score_time'     : 平均得分标准偏差（秒）
 'params'             : 备用参数，eg：[{'kernel': 'poly', 'degree': 2}, ...],
 }</code></p>
-<ul>
+<h4 id="&#32593;&#26684;&#25628;&#32034;&#26102;&#22914;&#26524;&#19981;&#20351;&#29992;&#20132;&#21449;&#39564;&#35777;&#20250;&#26377;&#20160;&#20040;&#38382;&#39064;&#65311;&#20132;&#21449;&#39564;&#35777;&#21448;&#26159;&#22914;&#20309;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064;&#30340;&#65311;">&#32593;&#26684;&#25628;&#32034;&#26102;&#22914;&#26524;&#19981;&#20351;&#29992;&#20132;&#21449;&#39564;&#35777;&#20250;&#26377;&#20160;&#20040;&#38382;&#39064;&#65311;&#20132;&#21449;&#39564;&#35777;&#21448;&#26159;&#22914;&#20309;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064;&#30340;&#65311;<a class="anchor-link" href="#&#32593;&#26684;&#25628;&#32034;&#26102;&#22914;&#26524;&#19981;&#20351;&#29992;&#20132;&#21449;&#39564;&#35777;&#20250;&#26377;&#20160;&#20040;&#38382;&#39064;&#65311;&#20132;&#21449;&#39564;&#35777;&#21448;&#26159;&#22914;&#20309;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064;&#30340;&#65311;">&#182;</a></h4><ul>
 <li>网格搜索算法用于系统地遍历多种参数的组合，通过交叉验证来确定最佳效果参数。如果网格搜索时不使用交叉验证则可能使得模型泛化能力无法达到最优(先调整参数后通过尽可能多的验证集来验证模型)。</li>
+<li><p>如果数据量不大，随机性也不够好，比如分布有顺序性，那么分出来的验证集有可能只包含数据集中一种特点的数据，这时候在验证集上得到的分数可能是不准确的。有可能是模型拟合得比较好的数据，得到的成绩优于真实表现；有可能是模型拟合得比较差的数据，得到的成绩差于真实表现。如果使用交叉验证，那么就会取多次不同的验证集分数的平均值，多次取平均值能够减少对模型表现评分的误差，这样就可以更准确地找到最优参数。</p>
+</li>
+<li><p>交叉验证的作用并不是直接避免过拟合欠拟合等问题，而是给出准确的评分，帮助网格搜索选择参数。</p>
+</li>
 </ul>
 
 </div>
@@ -13890,13 +13900,13 @@ RU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO 4</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO 4</span>
 
 <span class="c1">#提示: 导入 &#39;KFold&#39; &#39;DecisionTreeRegressor&#39; &#39;make_scorer&#39; &#39;GridSearchCV&#39; </span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">KFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 
 <span class="k">def</span> <span class="nf">fit_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -13949,7 +13959,7 @@ RU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO 4 可选</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO 4 可选</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">不允许使用 DecisionTreeRegressor 以外的任何 sklearn 库</span>
@@ -13966,7 +13976,7 @@ RU5ErkJggg==
     <span class="sd">&quot;&quot;&quot; 基于输入数据 [X,y]，利于网格搜索找到最优的决策树模型&quot;&quot;&quot;</span>
     
     <span class="c1">#最优交叉验证分数对应的最优模型</span>
-    <span class="n">best_estimator</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">best_estimator</span> <span class="o">=</span> <span class="kc">None</span>
     
     <span class="k">return</span> <span class="n">best_estimator</span>
 </pre></div>
@@ -13991,11 +14001,11 @@ RU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 基于训练数据，获得最优模型</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 基于训练数据，获得最优模型</span>
 <span class="n">optimal_reg</span> <span class="o">=</span> <span class="n">fit_model</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># 输出最优模型的 &#39;max_depth&#39; 参数</span>
-<span class="k">print</span> <span class="s2">&quot;Parameter &#39;max_depth&#39; is {} for the optimal model.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">optimal_reg</span><span class="o">.</span><span class="n">get_params</span><span class="p">()[</span><span class="s1">&#39;max_depth&#39;</span><span class="p">])</span>
+<span class="nb">print</span> <span class="s2">&quot;Parameter &#39;max_depth&#39; is </span><span class="si">{}</span><span class="s2"> for the optimal model.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">optimal_reg</span><span class="o">.</span><span class="n">get_params</span><span class="p">()[</span><span class="s1">&#39;max_depth&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -14085,7 +14095,7 @@ RU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 生成三个客户的数据</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 生成三个客户的数据</span>
 <span class="n">client_data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="c1"># 客户 1</span>
                <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">22</span><span class="p">],</span> <span class="c1"># 客户 2</span>
                <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>  <span class="c1"># 客户 3</span>
@@ -14093,7 +14103,7 @@ RU5ErkJggg==
 <span class="c1"># 进行预测</span>
 <span class="n">predicted_price</span> <span class="o">=</span> <span class="n">optimal_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">client_data</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predicted_price</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s2">&quot;Predicted selling price for Client {}&#39;s home: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;Predicted selling price for Client </span><span class="si">{}</span><span class="s2">&#39;s home: $</span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -14149,7 +14159,7 @@ Predicted selling price for Client 3&#39;s home: $933,660.00
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#TODO 5</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#TODO 5</span>
 
 <span class="c1"># 提示：你可能需要用到 X_test, y_test, optimal_reg, performance_metric</span>
 <span class="c1"># 提示：你可能需要参考问题10的代码进行预测</span>
@@ -14158,7 +14168,7 @@ Predicted selling price for Client 3&#39;s home: $933,660.00
 <span class="n">predicted</span> <span class="o">=</span> <span class="n">optimal_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">r2</span> <span class="o">=</span> <span class="n">performance_metric</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted</span><span class="p">),</span>
 
-<span class="k">print</span> <span class="s2">&quot;Optimal model has R^2 score {:} on test data&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;Optimal model has R^2 score </span><span class="si">{:}</span><span class="s2"> on test data&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -14220,7 +14230,7 @@ Predicted selling price for Client 3&#39;s home: $933,660.00
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 请先注释掉 fit_model 函数里的所有 print 语句</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 请先注释掉 fit_model 函数里的所有 print 语句</span>
 <span class="n">vs</span><span class="o">.</span><span class="n">PredictTrials</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">prices</span><span class="p">,</span> <span class="n">fit_model</span><span class="p">,</span> <span class="n">client_data</span><span class="p">)</span>
 </pre></div>
 
@@ -14326,7 +14336,7 @@ Range in prices: $32,116.67
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO 6</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO 6</span>
 
 <span class="c1"># 你的代码</span>
 
@@ -14354,7 +14364,7 @@ Range in prices: $32,116.67
 <span class="c1"># 通过x_test, 得到预计的y值，并将预计的y值和测试y值进行得分统计。eg：r^2 score 得分越接近1，预期效果越好</span>
     
 <span class="c1"># 完成</span>
-<span class="k">print</span> <span class="s2">&quot;BeiJin housing dataset has {} data points with {} variables each.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;BeiJin housing dataset has </span><span class="si">{}</span><span class="s2"> data points with </span><span class="si">{}</span><span class="s2"> variables each.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
 </div>
